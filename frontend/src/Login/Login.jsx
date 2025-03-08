@@ -1,7 +1,7 @@
-import React, { useState, useContext } from 'react'
-import { AuthContext } from '../context/AuthContext'
 import axios from "axios"
+import React, { useContext, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { AuthContext } from '../context/AuthContext'
 export default function Login() {
   const [formData, setFormData] = useState({ email: "", password: "" })
   const { setUser } = useContext(AuthContext)
@@ -11,10 +11,9 @@ export default function Login() {
   }
   function handleLogin(e) {
     e.preventDefault()
-    axios.post("http://localhost:4000/api/auth/login", formData)
+    axios.post("http://localhost:5000/api/auth/login", formData)
       .then((res) => {
         console.log("login response", res)
-        console.log(res.data.token, res.data.role)
         if (res.status === 200) {
           setUser({ token: res.data.token, role: res.data.role })
           navigate("/")
