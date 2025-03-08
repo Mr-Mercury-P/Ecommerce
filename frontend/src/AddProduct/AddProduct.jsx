@@ -22,7 +22,7 @@ const AddProduct = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const res = await axios.post("http://localhost:5000/api/products/add", formData, {
+            const res = await axios.post("https://ecommerce-8dln.onrender.com/api/products/add", formData, {
                 headers: { Authorization: `Bearer ${user.token}` },
             });
             alert(res.data.message);

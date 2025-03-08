@@ -13,7 +13,7 @@ const Cart = () => {
 
         const fetchCart = async () => {
             try {
-                const res = await axios.get("http://localhost:5000/api/cart", {
+                const res = await axios.get("https://ecommerce-8dln.onrender.com/api/cart", {
                     headers: { Authorization: `Bearer ${user.token}` }
                 });
                 setCart(res.data.products);
@@ -27,7 +27,7 @@ const Cart = () => {
 
     const removeFromCart = async (productId) => {
         try {
-            await axios.delete(`http://localhost:5000/api/cart/remove/${productId}`, {
+            await axios.delete(`https://ecommerce-8dln.onrender.com/api/cart/remove/${productId}`, {
                 headers: { Authorization: `Bearer ${user.token}` }
             });
             setCart(cart.filter(item => item.productId._id !== productId));
